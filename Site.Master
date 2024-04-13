@@ -42,7 +42,7 @@
             <div class="container">
                 <div class="navbar-header">
                     
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
+                    <a class="navbar-brand" runat="server" href="~/">Metalpedia</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">  

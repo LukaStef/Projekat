@@ -154,6 +154,7 @@
     <Content Include="Account\Forgot.aspx" />
     <Content Include="Account\Lockout.aspx" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\Style.css" />
     <Content Include="Content\TextFile1.txt" />
     <Content Include="Logo\iron-maiden.jpg" />
