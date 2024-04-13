@@ -1,0 +1,82 @@
+﻿CREATE TABLE Izvodjac
+(
+sifra INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+naziv NVARCHAR(20) NOT NULL,
+logoPutanja NVARCHAR(30) NOT NULL,
+datum DATE NOT NULL,
+sajt NVARCHAR(30) NOT NULL
+)
+
+CREATE TABLE Album
+(
+sifra INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+naziv NVARCHAR(60) NOT NULL,
+slikaPutanja NVARCHAR(60) NOT NULL,
+datum DATE NOT NULL,
+sifraIzvodjaca INT NOT NULL FOREIGN KEY REFERENCES Izvodjac(sifra),
+)
+CREATE TABLE Pesma
+(
+sifra INT PRIMARY KEY NOT NULL IDENTITY(1,1),
+naziv NVARCHAR(50) NOT NULL,
+sifraAlbuma INT NOT NULL FOREIGN KEY REFERENCES Album(sifra),
+link NVARCHAR(100) NOT NULL
+)
+
+INSERT INTO Izvodjac(naziv,logoPutanja,datum,sajt) VALUES('Metallica','~/Logo/metallica.jpg','1981-10-28','https://www.metallica.com/')
+INSERT INTO Izvodjac(naziv,logoPutanja,datum,sajt) VALUES('Megadeth','~/Logo/megadeth.jpeg','1983-04-11','https://www.megadeth.com/')
+INSERT INTO Izvodjac(naziv,logoPutanja,datum,sajt) VALUES('Iron Maiden','~/Logo/iron-maiden.jpg','1975-12-25','https://www.ironmaiden.com/')
+
+INSERT INTO Album(naziv,slikaPutanja,datum,sifraIzvodjaca) VALUES('Ride the Lightning','~/Slika/metallica/ride-the-lightning.png','1984-07-27',1)
+INSERT INTO Album(naziv,slikaPutanja,datum,sifraIzvodjaca) VALUES('Master of Puppets','~/Slika/metallica/master-of-puppets.jpg','1986-03-03',1)
+INSERT INTO Album(naziv,slikaPutanja,datum,sifraIzvodjaca) VALUES('Metallica','~/Slika/metallica/black-album.jpg','1991-08-12',1)
+
+INSERT INTO Album(naziv,slikaPutanja,datum,sifraIzvodjaca) VALUES('Rust in Peace','~/Slika/megadeth/rust-in-peace.jpg','1990-09-24',2)
+INSERT INTO Album(naziv,slikaPutanja,datum,sifraIzvodjaca) VALUES('Countdown to Extinction','~/Slika/megadeth/countdown.jpg','1992-07-14',2)
+INSERT INTO Album(naziv,slikaPutanja,datum,sifraIzvodjaca) VALUES('Dystopia','~/Slika/megadeth/dystopia.jpg','2016-01-22',2)
+
+INSERT INTO Album(naziv,slikaPutanja,datum,sifraIzvodjaca) VALUES('The Number of the Beast','~/Slika/iron-maiden/the-number-of-the-beast.jpg','1982-03-22',3)
+INSERT INTO Album(naziv,slikaPutanja,datum,sifraIzvodjaca) VALUES('Powerslave','~/Slika/iron-maiden/powerslave.jpg','1997-11-18',3)
+INSERT INTO Album(naziv,slikaPutanja,datum,sifraIzvodjaca) VALUES('Piece of Mind','~/Slika/iron-maiden/piece-of-mind.jpg','1983-05-16',3)
+
+
+
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Ride the Lightning',1,'https://www.youtube.com/watch?v=DVOImtJY7po')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('For Whom the Bell Tolls',1,'https://www.youtube.com/watch?v=B_HSa1dEL9s')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('The Call of Ktulu',1,'https://www.youtube.com/watch?v=3vSH9pMzHm0')
+
+
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Master of Puppets',2,'https://www.youtube.com/watch?v=E0ozmU9cJDg')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Damage Inc.',2,'https://www.youtube.com/watch?v=DdekZoYoamE')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Orion',2,'https://www.youtube.com/watch?v=TydZ4NAXMic')
+
+
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Enter Sandman',3,'https://www.youtube.com/watch?v=XZuM4zFg-60')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Sad But True',3,'https://www.youtube.com/watch?v=TpohVYomw2o')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Wherever I May Roam',3,'https://www.youtube.com/watch?v=Z-cEyiM9adE')
+
+
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Holy Wars... The Punishment Due',4,'https://www.youtube.com/watch?v=J5o8Daw1ZsY')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Take No Prisoners',4,'https://www.youtube.com/watch?v=lCJxuEWhMOY')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Tornado of Souls',4,'https://www.youtube.com/watch?v=L8HhOMNrulE')
+
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Symphony of Destruction',5,'https://www.youtube.com/watch?v=WdoXZf-FZyA')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Countdown to Extinction',5,'https://www.youtube.com/watch?v=bNVcktiS6C4')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Sweating Bullets',5,'https://www.youtube.com/watch?v=z5Erk_jL7fw')
+
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Dystopia',6,'https://www.youtube.com/watch?v=QrV61ATP3Ec')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Fatal Illusion',6,'https://www.youtube.com/watch?v=7MRtdd3tXI4')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Conquer or Die',6,'https://www.youtube.com/watch?v=mAIdrXFJh1o')
+
+
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('The Prisoner',7,'https://www.youtube.com/watch?v=MLYdFSaE4tk')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Run to the Hills',7,'https://www.youtube.com/watch?v=86URGgqONvA')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Hallowed be thy Name',7,'https://www.youtube.com/watch?v=HAQQUDbuudY')
+
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Aces High',8,'https://www.youtube.com/watch?v=oNwOA84zAcE')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('2 Minutes to Midnight',8,'https://www.youtube.com/watch?v=HeciGNbzU1E')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Powerslave',8,'https://www.youtube.com/watch?v=Mw-o_cSdqmI')
+
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Where Eagles Dare',9,'https://www.youtube.com/watch?v=NGqbJiq675s')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('Flight of Icarus',9,'https://www.youtube.com/watch?v=lFF3S8NG-Wg')
+INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES('The Trooper',9,'https://www.youtube.com/watch?v=X4bgXH3sJ2Q')
