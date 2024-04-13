@@ -2,8 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main aria-labelledby="title">
-        <h2 id="title"><%: Title %>.</h2>
-        <h3>Your application description page.</h3>
-        <p>Use this area to provide additional information.</p>
+        <h3>About this site</h3>
+        <p>Metalpedia is a website where you can browse popular and iconic metal bands and their albums and songs.</p>
     </main>
 </asp:Content>
