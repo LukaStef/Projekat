@@ -91,11 +91,11 @@
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
         <br />
         <asp:Label ID="lblError" runat="server" Text=""></asp:Label><br />
-        <asp:Button ID="btnAdd" runat="server" Text="Add" CssClass="btn btn-primary bold" OnClick="btnAdd_Click"/><br />
-        <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-warning bold" OnClick="btnEdit_Click"/><br />
+        <asp:Button ID="btnAdd" runat="server" Text="Add" CssClass="btn btn-primary bold" OnClick="btnAdd_Click"/>&emsp;
+        <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-warning bold" OnClick="btnEdit_Click"/>&emsp;
         <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger bold" OnClick="btnDelete_Click"/><br />
         
     </asp:Panel>
     <br />
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateSelectButton="true" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CssClass="table" SelectedRowStyle-BackColor="LightGray" SelectedRowStyle-Font-Underline="true" SelectedRowStyle-ForeColor="Black"></asp:GridView>
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateSelectButton="true" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CssClass="table" SelectedRowStyle-BackColor="LightGray" SelectedRowStyle-ForeColor="Black"></asp:GridView>
 </asp:Content>

@@ -47,7 +47,7 @@
             <asp:BoundField DataField="name" HeaderText="Name"></asp:BoundField>
             <asp:BoundField DataField="album" HeaderText="Album"></asp:BoundField>
             <asp:ImageField DataImageUrlField="cover" HeaderText="Album cover">
-                <ControlStyle Height="160px" Width="160px"  />
+                <ControlStyle Height="160px" Width="160px"   BorderWidth="1" BorderColor="White" />
             </asp:ImageField>
             <asp:BoundField DataField="band" HeaderText="Band"></asp:BoundField>
             <asp:HyperLinkField DataNavigateUrlFields="link" DataTextField="linkText" HeaderText="YouTube link"></asp:HyperLinkField>
