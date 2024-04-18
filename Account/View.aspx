@@ -20,17 +20,17 @@
     <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
     <br />
     <br />
-    <asp:GridView ID="gvAlbum" runat="server" CssClass="table table-hover" EmptyDataText="No items found" AutoGenerateColumns="false">
+    <asp:GridView ID="gvAlbum" runat="server" CssClass="table" EmptyDataText="No items found" AutoGenerateColumns="false">
         <Columns>
             <asp:BoundField DataField="name" HeaderText="Name"></asp:BoundField>
             <asp:BoundField DataField="date" HeaderText="Release date"></asp:BoundField>
             <asp:BoundField DataField="band" HeaderText="Band"></asp:BoundField>
             <asp:ImageField DataImageUrlField="cover" HeaderText="Cover">
-                <ControlStyle Height="160px" Width="160px"  />
+                <ControlStyle Height="160px" Width="160px"  BorderWidth="1" BorderColor="White" />
             </asp:ImageField>
         </Columns>
     </asp:GridView>
-    <asp:GridView ID="gvBand" runat="server" CssClass="table table-hover" EmptyDataText="No items found" AutoGenerateColumns="false">
+    <asp:GridView ID="gvBand" runat="server" CssClass="table" EmptyDataText="No items found" AutoGenerateColumns="false">
         <Columns>
             <asp:BoundField DataField="name" HeaderText="Name"></asp:BoundField>
             <asp:BoundField DataField="date" HeaderText="Date of formation"></asp:BoundField>
@@ -42,7 +42,7 @@
             </asp:HyperLinkField>
         </Columns>
     </asp:GridView>
-    <asp:GridView ID="gvSong" runat="server" CssClass="table table-hover" EmptyDataText="No items found" AutoGenerateColumns="false">
+    <asp:GridView ID="gvSong" runat="server" CssClass="table"  EmptyDataText="No items found" AutoGenerateColumns="false">
         <Columns>
             <asp:BoundField DataField="name" HeaderText="Name"></asp:BoundField>
             <asp:BoundField DataField="album" HeaderText="Album"></asp:BoundField>

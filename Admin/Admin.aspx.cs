@@ -101,7 +101,7 @@ namespace Projekat.Admin
                         tbId.Text = row.Cells[1].Text;
                         tbName.Text = row.Cells[2].Text;
                         tbLogo.Text = row.Cells[3].Text;
-                        tbDate.Text = row.Cells[4].Text;
+                        tbDate.Text = PromeniFormatZaDatum(row.Cells[4].Text); //sql puno zeza sa datumima
                         tbSite.Text = row.Cells[5].Text;
 
                         break;
@@ -110,7 +110,7 @@ namespace Projekat.Admin
                         tbIdA.Text = row.Cells[1].Text;
                         tbNameA.Text = row.Cells[2].Text;
                         tbCover.Text = row.Cells[3].Text;
-                        tbDateA.Text = row.Cells[4].Text;
+                        tbDateA.Text = PromeniFormatZaDatum(row.Cells[4].Text);
                         tbBand.Text = row.Cells[5].Text;
 
                         break;
@@ -337,7 +337,19 @@ namespace Projekat.Admin
             using (con)
             {
                 con.Open();
-
+                string id = tbIdA.Text;
+                string name = tbNameA.Text;
+                string cover = tbCover.Text;
+                string date = tbDateA.Text;
+                string band = tbBand.Text;
+                string upit = "UPDATE Album SET naziv=@name, slikaPutanja=@cover, datum=@date, sifraIzvodjaca=@band WHERE sifra=@id";
+                SqlCommand cmd = new SqlCommand(upit, con);
+                cmd.Parameters.AddWithValue("name", name);
+                cmd.Parameters.AddWithValue("cover", cover);
+                cmd.Parameters.AddWithValue("date", date);
+                cmd.Parameters.AddWithValue("band", band);
+                cmd.Parameters.AddWithValue("id", id);
+                cmd.ExecuteNonQuery();
             }
         }
         void DeleteAlbum(SqlConnection con)
@@ -373,7 +385,17 @@ namespace Projekat.Admin
             using (con)
             {
                 con.Open();
-
+                string id = tbIdS.Text;
+                string name = tbNameS.Text;
+                string album = tbAlbum.Text;
+                string link = tblink.Text;
+                string upit = "UPDATE Pesma SET naziv=@name, sifraAlbuma=@album, link=@link WHERE sifra=@id";
+                SqlCommand cmd = new SqlCommand(upit, con);
+                cmd.Parameters.AddWithValue("name", name);
+                cmd.Parameters.AddWithValue("album", album);
+                cmd.Parameters.AddWithValue("link", link);
+                cmd.Parameters.AddWithValue("id", id);
+                cmd.ExecuteNonQuery();
             }
         }
         void DeleteSong(SqlConnection con)
@@ -389,9 +411,12 @@ namespace Projekat.Admin
             }
         }
 
-        protected void btnUpload_Click()
+        string PromeniFormatZaDatum(string datum)
         {
-
+            datum = datum.Remove(10);
+            string[] delovi = datum.Split('/');
+            datum = $"{delovi[2]}-{delovi[1]}-{delovi[0]}";
+            return datum;
         }
     }
 }

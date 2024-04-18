@@ -3,10 +3,11 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <main>
-        <h1 id="aspnetTitle">Welcome to Metalpedia</h1>
+        <h1>Welcome to Metalpedia!</h1>
         <p>The world of metal at your fingertips! <br />
             Log in to get started!
         </p>
+        
     </main>
 
 </asp:Content>

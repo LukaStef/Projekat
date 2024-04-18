@@ -154,6 +154,8 @@
     <Content Include="Account\Forgot.aspx" />
     <Content Include="Account\Lockout.aspx" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Logo\metalpedia.png" />
+    <Content Include="Admin\Logo\metalpedia.png" />
     <Content Include="Content\MrzimCSS.css" />
     <Content Include="Content\Style.css" />
     <Content Include="Content\TextFile1.txt" />
@@ -193,6 +195,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Logo\metalpedia.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />

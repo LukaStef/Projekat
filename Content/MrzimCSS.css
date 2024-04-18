@@ -1,43 +1,106 @@
 ﻿body {
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: black; 
+    color: #c0c0c0;
+}
+
+
+.navbar {
+    background-color: #1c1c1c;
+    border: 4px solid #666666;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.6em;
+    color: red;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.navbar-brand:hover {
+    color: darkred !important;
+}
+
+.nav-link {
+    color: #ccc !important;
+    transition: color 0.3s ease;
+    
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #ff0000 !important; 
+    text-decoration: none;
+}
+
+footer {
+    padding: 1.5rem 0;
+    background-color: #1c1c1c;
+    color: #d3d3d3;
+    border: 4px solid #666666;
+    width: 100%;
+}
+
+footer p {
+    margin-bottom: 0;
+    font-size: 0.9em;
+}
+.mt-4 {
+    margin: 0px;
+}
+
+.navbar-brand:hover {
+    color: #ff0000 !important;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .nav-item {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.table {
+    color:white;
+    width: 900px;
+    background-color:black;
+    text-align:center;
+    justify-content:center;
+    align-items:center;
+}
+
+.table td, .table th {
+    padding: 20px; 
+    font-size: 16px; 
+    vertical-align: middle;
+    font-size:20px;
+}
+
+h1 {
+    color: #eb0000;
+    font-weight: bold;
+    font-size: 1.6em;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 img {
-    border-radius: 10%;
+    border-radius: 7%;
 }
 
-.bold {
-    font-weight: bold;
-    height: 50px;
-    width: 100px;
+a {
+    color:red;
 }
 
-table {
-    text-align: center;
-    align-content: center;
-    justify-items: center;
+a:active {
+    color:darkred;
 }
 
-﻿ /* Move down content because we have a fixed navbar that is 50px tall */
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+a:hover {
+    color:orangered;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
-}
-
-/* Set widths on the form inputs since otherwise they're 100% wide */
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -46,13 +109,14 @@ input[type="select"] {
     max-width: 280px;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .jumbotron {
-        margin-top: 20px;
-    }
+.mejn {
+    padding: 10px;
+    border-right: 3px solid #666666;
+    border-left: 3px solid #666666;
+    background-color: #141414;
+}
 
-    .body-content {
-        padding: 0;
-    }
+.logo {
+    height:100px;
+    width:100px;
 }

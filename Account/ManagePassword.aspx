@@ -84,7 +84,7 @@
                         </div>
                         <div class="row">
                             <div class="offset-md-2 col-md-10">
-                                <asp:Button runat="server" Text="Change Password" ValidationGroup="ChangePassword" OnClick="ChangePassword_Click" CssClass="btn btn-outline-dark" />
+                                <asp:Button runat="server" Text="Change Password" ValidationGroup="ChangePassword" OnClick="ChangePassword_Click" CssClass="btn btn-primary" />
                             </div>
                         </div>
                     </div>

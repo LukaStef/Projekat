@@ -22,8 +22,8 @@ namespace Projekat.Account
                 using (con)
                 {
                     con.Open();
-                    string upitB = "SELECT naziv,CAST(datum AS DATE) AS datum,logoPutanja,sajt FROM Izvodjac";
-                    string upitA = "SELECT a.naziv,i.naziv as band,CAST(a.datum AS DATE) AS datum,a.slikaPutanja FROM Album a JOIN Izvodjac i ON a.sifraIzvodjaca = i.sifra";
+                    string upitB = "SELECT naziv,CAST(datum AS DATE) AS date,logoPutanja,sajt FROM Izvodjac";
+                    string upitA = "SELECT a.naziv,i.naziv as band,CAST(a.datum AS DATE) AS date,a.slikaPutanja FROM Album a JOIN Izvodjac i ON a.sifraIzvodjaca = i.sifra";
                     string upitS = "SELECT p.naziv,a.naziv as album,a.slikaPutanja,i.naziv,p.link FROM Pesma p, Album a, Izvodjac i WHERE p.sifraAlbuma = a.sifra AND a.sifraIzvodjaca = i.sifra";
 
                     //ubacivanje bendova
