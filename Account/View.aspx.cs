@@ -55,6 +55,9 @@ namespace Projekat.Account
                         pesme.Add(b);
                     }
                     dr.Close();
+
+                    gvBand.DataSource = bendovi;
+                    gvBand.DataBind();
                 }
                     
 
@@ -127,6 +130,18 @@ namespace Projekat.Account
                 tbAlbum.Visible = false;
                 lblBand.Visible = true;
                 tbBand.Visible = true;
+
+                gvAlbum.DataSource = albumi;
+                gvAlbum.DataBind();
+
+                gvBand.DataSource = null;
+                gvBand.DataBind();
+                gvSong.DataSource = null;
+                gvSong.DataBind();
+
+                gvAlbum.Visible = true;
+                gvBand.Visible = false;
+                gvSong.Visible = false;
             }
             else if (ddlSearch.SelectedValue == "b") // za bend samo tb za naziv
             {
@@ -134,6 +149,18 @@ namespace Projekat.Account
                 tbAlbum.Visible = false;
                 lblBand.Visible = false;
                 tbBand.Visible = false;
+
+                gvBand.DataSource = bendovi;
+                gvBand.DataBind();
+
+                gvAlbum.DataSource = null;
+                gvAlbum.DataBind();
+                gvSong.DataSource = null;
+                gvSong.DataBind();
+
+                gvBand.Visible= true;
+                gvAlbum.Visible = false;
+                gvSong.Visible = false;
             }
             else if (ddlSearch.SelectedValue=="s") //za pesmu treba sve
             {
@@ -141,6 +168,18 @@ namespace Projekat.Account
                 tbBand.Visible = true;
                 lblAlbum.Visible = true;
                 tbAlbum.Visible = true;
+
+                gvSong.DataSource = pesme;
+                gvSong.DataBind();
+
+                gvBand.DataSource = null;
+                gvBand.DataBind();
+                gvAlbum.DataSource = null;
+                gvAlbum.DataBind();
+
+                gvSong.Visible = true;
+                gvBand.Visible = false;
+                gvAlbum.Visible = false;
             }
 
 

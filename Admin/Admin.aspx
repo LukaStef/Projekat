@@ -16,7 +16,7 @@
         
         <asp:Label ID="lblNameB" runat="server" Text="Name:"></asp:Label> 
         <asp:RequiredFieldValidator ID="reqNameBand" runat="server" ErrorMessage="Band name required" ControlToValidate="tbName" Text="*"></asp:RequiredFieldValidator>
-        <asp:TextBox ID="tbName" runat="server" CssClass="form-control has-danger"></asp:TextBox>
+        <asp:TextBox ID="tbName" runat="server" CssClass="form-control"></asp:TextBox>
         
 
         
@@ -25,9 +25,9 @@
         <asp:TextBox ID="tbLogo" runat="server" CssClass="form-control"></asp:TextBox>
         
         
-        <asp:Label ID="lblDateB" runat="server" Text="Date:" ></asp:Label> 
+        <asp:Label ID="lblDateB" runat="server" Text="Date (yyyy-mm-dd):" ></asp:Label> 
         <asp:RequiredFieldValidator ID="reqDateBand" runat="server" ErrorMessage="Date of formation required" ControlToValidate="tbDate" Text="*"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="regexDateBand" runat="server" ErrorMessage="Invalid date" ValidationExpression="^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[1,3-9]|1[0-2])(\/|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/|-|\.)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" ControlToValidate="tbDate" Text="*"></asp:RegularExpressionValidator>
+        <%--<asp:RegularExpressionValidator ID="regexDateBand" runat="server" ErrorMessage="Invalid date" ValidationExpression="^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[1,3-9]|1[0-2])(\/|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/|-|\.)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" ControlToValidate="tbDate" Text="*"></asp:RegularExpressionValidator>--%>
         <asp:TextBox ID="tbDate" runat="server" CssClass="form-control"></asp:TextBox>
         
         
@@ -44,8 +44,8 @@
         
 
         <asp:Label ID="lblNameA" runat="server" Text="Name:"></asp:Label> 
-        <asp:RequiredFieldValidator ID="reqNameAlbum" runat="server" ErrorMessage="Album name is required" ControlToValidate="tbnameA" Text="*"></asp:RequiredFieldValidator>
-        <asp:TextBox ID="tbnameA" runat="server" CssClass="form-control"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="reqNameAlbum" runat="server" ErrorMessage="Album name is required" ControlToValidate="tbNameA" Text="*"></asp:RequiredFieldValidator>
+        <asp:TextBox ID="tbNameA" runat="server" CssClass="form-control"></asp:TextBox>
         
 
         <asp:Label ID="lblCover" runat="server" Text="Album cover (file path):"></asp:Label> 
@@ -53,9 +53,9 @@
         <asp:TextBox ID="tbCover" runat="server" CssClass="form-control"></asp:TextBox>
         
 
-        <asp:Label ID="lblDateA" runat="server" Text="Date:" ></asp:Label> 
+        <asp:Label ID="lblDateA" runat="server" Text="Date (yyyy-mm-dd):" ></asp:Label> 
         <asp:RequiredFieldValidator ID="reqDateAlbum" runat="server" ErrorMessage="Album release date required" ControlToValidate="tbDateA" Text="*"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="regexDateAlbum" runat="server" ErrorMessage="Invalid date" ValidationExpression="^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[1,3-9]|1[0-2])(\/|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/|-|\.)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" ControlToValidate="tbDateA" Text="*"></asp:RegularExpressionValidator>
+        <%--<asp:RegularExpressionValidator ID="regexDateAlbum" runat="server" ErrorMessage="Invalid date" ValidationExpression="^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[1,3-9]|1[0-2])(\/|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/|-|\.)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" ControlToValidate="tbDateA" Text="*"></asp:RegularExpressionValidator>--%>
         <asp:TextBox ID="tbDateA" runat="server" CssClass="form-control"></asp:TextBox>
         
 
@@ -89,11 +89,14 @@
     <br />
     <asp:Panel ID="Panel1" runat="server">
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
-        <asp:Button ID="btnAdd" runat="server" Text="Add" CssClass="btn btn-primary"/><br />
-        <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-warning"/><br />
-        <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger"/><br />
+        <br />
+        <asp:Label ID="lblError" runat="server" Text=""></asp:Label><br />
+        <asp:Button ID="btnAdd" runat="server" Text="Add" CssClass="btn btn-primary bold" OnClick="btnAdd_Click"/><br />
+        <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-warning bold" OnClick="btnEdit_Click"/><br />
+        <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger" OnClick="btnDelete_Click"/><br />
+        <br />
+        <asp:FileUpload ID="FileUpload1" runat="server" CssClass="btn btn-primary" />
     </asp:Panel>
     <br />
-    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateSelectButton="true" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CssClass="table" SelectedRowStyle-BackColor="LightGray" SelectedRowStyle-Font-Underline="true"></asp:GridView>
 </asp:Content>

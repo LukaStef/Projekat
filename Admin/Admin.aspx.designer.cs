@@ -123,15 +123,6 @@ namespace Projekat.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqDateBand;
 
         /// <summary>
-        /// regexDateBand control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexDateBand;
-
-        /// <summary>
         /// tbDate control.
         /// </summary>
         /// <remarks>
@@ -213,13 +204,13 @@ namespace Projekat.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNameAlbum;
 
         /// <summary>
-        /// tbnameA control.
+        /// tbNameA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbnameA;
+        protected global::System.Web.UI.WebControls.TextBox tbNameA;
 
         /// <summary>
         /// lblCover control.
@@ -265,15 +256,6 @@ namespace Projekat.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqDateAlbum;
-
-        /// <summary>
-        /// regexDateAlbum control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexDateAlbum;
 
         /// <summary>
         /// tbDateA control.
@@ -438,6 +420,15 @@ namespace Projekat.Admin
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
 
         /// <summary>
+        /// lblError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
+
+        /// <summary>
         /// btnAdd control.
         /// </summary>
         /// <remarks>
@@ -463,15 +454,6 @@ namespace Projekat.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDelete;
-
-        /// <summary>
-        /// lblError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
         /// GridView1 control.

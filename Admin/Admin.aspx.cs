@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,13 +12,14 @@ namespace Projekat.Admin
 {
     public partial class Admin : System.Web.UI.Page
     {
+        string cs = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Projekat;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack)
                 return;
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=Projekat;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                SqlConnection con = new SqlConnection(cs);
 
                 string upit = "SELECT * FROM Izvodjac";
                 TraziBiloSta(con, upit);
@@ -50,10 +52,11 @@ namespace Projekat.Admin
         {
             try
             {
+                lblError.Text = "";
                 OcistiTextboxoveAlbum();
                 OcistiTextboxoveBand();
                 OcistitextboxoveSong();
-                SqlConnection con = new SqlConnection(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=Projekat;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                SqlConnection con = new SqlConnection(cs);
                 string upit = "";
                 switch (ddlSearch.SelectedValue)
                 {
@@ -105,7 +108,7 @@ namespace Projekat.Admin
                     case "a":
 
                         tbIdA.Text = row.Cells[1].Text;
-                        tbnameA.Text = row.Cells[2].Text;
+                        tbNameA.Text = row.Cells[2].Text;
                         tbCover.Text = row.Cells[3].Text;
                         tbDateA.Text = row.Cells[4].Text;
                         tbBand.Text = row.Cells[5].Text;
@@ -141,7 +144,7 @@ namespace Projekat.Admin
         void OcistiTextboxoveAlbum()
         {
             tbIdA.Text = "";
-            tbnameA.Text = "";
+            tbNameA.Text = "";
             tbCover.Text = "";
             tbDateA.Text = "";
             tbBand.Text = "";
@@ -153,6 +156,242 @@ namespace Projekat.Admin
             tbNameS.Text = "";
             tbAlbum.Text = "";
             tblink.Text = "";
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            lblError.Text = "";
+            if (!Page.IsValid)
+                return;
+            try
+            {
+                string upit = "";
+                SqlConnection con = new SqlConnection(cs);
+                if (ddlSearch.SelectedValue == "b")
+                {
+                    AddBand(con);
+                    upit = "SELECT * FROM Izvodjac";
+                }
+                if (ddlSearch.SelectedValue == "a")
+                {
+                    AddAlbum(con);
+                    upit = "SELECT * FROM Album";
+                }
+                if (ddlSearch.SelectedValue == "s")
+                {
+                    AddSong(con);
+                    upit = "SELECT * FROM Pesma";
+                }
+                con = new SqlConnection(cs);
+                TraziBiloSta(con, upit);
+            }
+            catch (Exception x)
+            {
+                lblError.Text = "SERVER ERROR";
+                System.Diagnostics.Debug.WriteLine(x.Message);
+                System.Diagnostics.Debug.WriteLine(x.StackTrace);
+            }
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            lblError.Text = "";
+            if (!Page.IsValid)
+                return;
+            try
+            {
+                string upit = "";
+                SqlConnection con = new SqlConnection(cs);
+                if (ddlSearch.SelectedValue == "b")
+                {
+                    EditBand(con);
+                    upit = "SELECT * FROM Izvodjac";
+                }
+                if (ddlSearch.SelectedValue == "a")
+                {
+                    EditAlbum(con);
+                    upit = "SELECT * FROM Album";
+                }
+                if (ddlSearch.SelectedValue == "s")
+                {
+                    EditSong(con);
+                    upit = "SELECT * FROM Pesma";
+                }
+                con = new SqlConnection(cs);
+                TraziBiloSta(con, upit);
+            }
+            catch (Exception x)
+            {
+                lblError.Text = "SERVER ERROR";
+                System.Diagnostics.Debug.WriteLine(x.Message);
+                System.Diagnostics.Debug.WriteLine(x.StackTrace);
+            }
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            lblError.Text = "";
+            if (!Page.IsValid)
+                return;
+            try
+            {
+                string upit = "";
+                SqlConnection con = new SqlConnection(cs);
+                if (ddlSearch.SelectedValue == "b")
+                {
+                    DeleteBand(con);
+                    upit = "SELECT * FROM Izvodjac";
+                }
+                if (ddlSearch.SelectedValue == "a")
+                {
+                    DeleteAlbum(con);
+                    upit = "SELECT * FROM Album";
+                }
+                if (ddlSearch.SelectedValue == "s")
+                {
+                    DeleteSong(con);
+                    upit = "SELECT * FROM Pesma";
+                }
+                con = new SqlConnection(cs);
+                TraziBiloSta(con, upit);
+            }
+            catch (Exception x)
+            {
+                lblError.Text = "SERVER ERROR";
+                System.Diagnostics.Debug.WriteLine(x.Message);
+                System.Diagnostics.Debug.WriteLine(x.StackTrace);
+            }
+        }
+
+        void AddBand(SqlConnection con)
+        {
+            using (con)
+            {
+                con.Open();
+                string name = tbName.Text;
+                string logo = tbLogo.Text;
+                string date = tbDate.Text;
+                string site = tbSite.Text;
+                string upit = "INSERT INTO Izvodjac(naziv,logoPutanja,datum,sajt) VALUES(@name,@logo,@date,@site)";
+                SqlCommand cmd = new SqlCommand(upit, con);
+                cmd.Parameters.AddWithValue("name",name);
+                cmd.Parameters.AddWithValue("logo",logo);
+                cmd.Parameters.AddWithValue("date",date);
+                cmd.Parameters.AddWithValue("site",site);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        void EditBand(SqlConnection con)
+        {
+            using (con)
+            {
+                con.Open();
+                string id = tbId.Text;
+                string name = tbName.Text;
+                string logo = tbLogo.Text;
+                string date = tbDate.Text;
+                string site = tbSite.Text;
+                string upit = "UPDATE Izvodjac SET naziv=@name, logoPutanja=@logo, datum=@date, sajt=@site WHERE sifra=@id";
+                SqlCommand cmd = new SqlCommand(upit, con);
+                cmd.Parameters.AddWithValue("name", name);
+                cmd.Parameters.AddWithValue("logo", logo);
+                cmd.Parameters.AddWithValue("date", date);
+                cmd.Parameters.AddWithValue("site", site);
+                cmd.Parameters.AddWithValue("id", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        void DeleteBand(SqlConnection con)
+        {
+            using (con)
+            {
+                con.Open();
+                string id = tbId.Text;
+                string upit = "DELETE FROM Izvodjac WHERE sifra=@id";
+                SqlCommand cmd = new SqlCommand(upit, con);
+                cmd.Parameters.AddWithValue("id",id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        void AddAlbum(SqlConnection con)
+        {
+            using (con)
+            {
+                con.Open();
+                string name = tbNameA.Text;
+                string logo = tbCover.Text;
+                string date = tbDateA.Text;
+                string band = tbBand.Text;
+                string upit = "INSERT INTO Album(naziv,slikaPutanja,datum,sifraIzvodjaca) VALUES(@name,@logo,@date,@band)";
+                SqlCommand cmd = new SqlCommand(upit, con);
+                cmd.Parameters.AddWithValue("name", name);
+                cmd.Parameters.AddWithValue("logo", logo);
+                cmd.Parameters.AddWithValue("date", date);
+                cmd.Parameters.AddWithValue("band", band);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        void EditAlbum(SqlConnection con)
+        {
+            using (con)
+            {
+                con.Open();
+
+            }
+        }
+        void DeleteAlbum(SqlConnection con)
+        {
+            using (con)
+            {
+                con.Open();
+                string id = tbIdA.Text;
+                string upit = "DELETE FROM Album WHERE sifra=@id";
+                SqlCommand cmd = new SqlCommand(upit, con);
+                cmd.Parameters.AddWithValue("id", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        void AddSong(SqlConnection con)
+        {
+            using (con)
+            {
+                con.Open();
+                string name = tbNameS.Text;
+                string album = tbAlbum.Text;
+                string link = tblink.Text;
+                string upit = "INSERT INTO Pesma(naziv,sifraAlbuma,link) VALUES(@name,@album,@link)";
+                SqlCommand cmd = new SqlCommand(upit, con);
+                cmd.Parameters.AddWithValue("name", name);
+                cmd.Parameters.AddWithValue("album", album);
+                cmd.Parameters.AddWithValue("link", link);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        void EditSong(SqlConnection con)
+        {
+            using (con)
+            {
+                con.Open();
+
+            }
+        }
+        void DeleteSong(SqlConnection con)
+        {
+            using (con)
+            {
+                con.Open();
+                string id = tbIdS.Text;
+                string upit = "DELETE FROM Pesma WHERE sifra=@id";
+                SqlCommand cmd = new SqlCommand(upit, con);
+                cmd.Parameters.AddWithValue("id", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        protected void btnUpload_Click()
+        {
+
         }
     }
 }

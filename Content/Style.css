@@ -2,23 +2,24 @@
 }
 
 img {
-    border-radius:10%;
+    border-radius: 10%;
 }
 
 .bold {
-    font-weight:bold;
-    height:50px;
-    width:100px;
+    font-weight: bold;
+    height: 50px;
+    width: 100px;
 }
+
 table {
-    text-align:center;
-    align-content:center;
-    justify-items:center;
+    text-align: center;
+    align-content: center;
+    justify-items: center;
 }
 
 menu-item {
     padding: 4px;
-    background-color:red;
+    background-color: red;
 }
 
 ﻿ /* Move down content because we have a fixed navbar that is 50px tall */
