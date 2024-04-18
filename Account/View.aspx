@@ -20,7 +20,8 @@
     <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
     <br />
     <br />
-    <asp:GridView ID="gvAlbum" runat="server" CssClass="table" EmptyDataText="No items found" AutoGenerateColumns="false">
+    <div class="centriraj">
+        <asp:GridView ID="gvAlbum" runat="server" CssClass="table" EmptyDataText="No items found" AutoGenerateColumns="false">
         <Columns>
             <asp:BoundField DataField="name" HeaderText="Name"></asp:BoundField>
             <asp:BoundField DataField="date" HeaderText="Release date"></asp:BoundField>
@@ -53,5 +54,7 @@
             <asp:HyperLinkField DataNavigateUrlFields="link" DataTextField="linkText" HeaderText="YouTube link"></asp:HyperLinkField>
         </Columns>
     </asp:GridView>
+    </div>
+    
 
 </asp:Content>

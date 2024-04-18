@@ -47,13 +47,13 @@ footer p {
     margin: 0px;
 }
 
-.navbar-brand:hover {
+/*.navbar-brand:hover {
     color: #ff0000 !important;
-}
+}*/
 
 .table {
     color:white;
-    width: 900px;
+    width: 1200px;
     background-color:black;
     text-align:center;
     justify-content:center;
@@ -108,4 +108,11 @@ input[type="select"] {
 .logo {
     height:100px;
     width:100px;
+}
+
+.centriraj {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }

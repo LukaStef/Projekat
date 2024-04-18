@@ -37,6 +37,7 @@
         </div>
         <div class="row">
             <div class="offset-md-2 col-md-10">
+                <br />
                 <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-primary" />
             </div>
         </div>

@@ -418,5 +418,23 @@ namespace Projekat.Admin
             datum = $"{delovi[2]}-{delovi[1]}-{delovi[0]}";
             return datum;
         }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            tbAlbum.Text = "";
+            tbBand.Text = "";
+            tbCover.Text = "";
+            tbDate.Text = "";
+            tbDateA.Text = "";
+            tbId.Text = "";
+            tbIdA.Text = "";
+            tbIdS.Text = "";
+            tblink.Text = "";
+            tbLogo.Text = "";
+            tbName.Text = "";
+            tbNameA.Text = "";
+            tbNameS.Text = "";
+            tbSite.Text = "";
+        }
     }
 }

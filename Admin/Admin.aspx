@@ -11,7 +11,7 @@
     </asp:DropDownList><br />
 
     <asp:Panel ID="panelBand" runat="server">
-        <asp:Label ID="lblIdB" runat="server" Text="ID:"></asp:Label> <asp:TextBox ID="tbId" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+        <asp:Label ID="lblIdB" runat="server" Text="ID (used for editing and deleting):"></asp:Label> <asp:TextBox ID="tbId" runat="server" CssClass="form-control"></asp:TextBox>
 
         
         <asp:Label ID="lblNameB" runat="server" Text="Name:"></asp:Label> 
@@ -40,7 +40,7 @@
     </asp:Panel>
 
     <asp:Panel ID="panelAlbum" runat="server" Visible="false">
-        <asp:Label ID="lblIdA" runat="server" Text="ID:"></asp:Label> <asp:TextBox ID="tbIdA" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+        <asp:Label ID="lblIdA" runat="server" Text="ID (used for editing and deleting):"></asp:Label> <asp:TextBox ID="tbIdA" runat="server" CssClass="form-control"></asp:TextBox>
         
 
         <asp:Label ID="lblNameA" runat="server" Text="Name:"></asp:Label> 
@@ -67,7 +67,7 @@
     </asp:Panel>
 
     <asp:Panel ID="panelSong" runat="server" Visible="false">
-        <asp:Label ID="lblIdS" runat="server" Text="ID:"></asp:Label> <asp:TextBox ID="tbIdS" runat="server" CssClass="form-control" Enabled="false"></asp:TextBox>
+        <asp:Label ID="lblIdS" runat="server" Text="ID (used for editing and deleting):"></asp:Label> <asp:TextBox ID="tbIdS" runat="server" CssClass="form-control"></asp:TextBox>
 
 
         <asp:Label ID="lblNameS" runat="server" Text="Name:"></asp:Label> 
@@ -91,11 +91,16 @@
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
         <br />
         <asp:Label ID="lblError" runat="server" Text=""></asp:Label><br />
+        <asp:Button ID="btnClear" runat="server" Text="Clear parameters" OnClick="btnClear_Click" CssClass="btn btn-danger" /><br />
+        <br />
         <asp:Button ID="btnAdd" runat="server" Text="Add" CssClass="btn btn-primary bold" OnClick="btnAdd_Click"/>&emsp;
         <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-warning bold" OnClick="btnEdit_Click"/>&emsp;
         <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger bold" OnClick="btnDelete_Click"/><br />
         
     </asp:Panel>
     <br />
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateSelectButton="true" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CssClass="table" SelectedRowStyle-BackColor="LightGray" SelectedRowStyle-ForeColor="Black"></asp:GridView>
+    <div class="centriraj">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateSelectButton="true" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" CssClass="table" SelectedRowStyle-BackColor="LightGray" SelectedRowStyle-ForeColor="Black"></asp:GridView>
+    </div>
+    
 </asp:Content>
