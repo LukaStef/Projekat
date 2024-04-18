@@ -5,7 +5,7 @@
     <main>
         <h1>Welcome to Metalpedia!</h1>
         <p>The world of metal at your fingertips! <br />
-            Log in to get started!
+            Log in to get started.
         </p>
         
     </main>
