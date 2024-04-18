@@ -4,7 +4,6 @@
     color: #c0c0c0;
 }
 
-
 .navbar {
     background-color: #1c1c1c;
     border: 4px solid #666666;
@@ -52,16 +51,6 @@ footer p {
     color: #ff0000 !important;
 }
 
-@media (max-width: 768px) {
-    .navbar-nav {
-        text-align: center;
-    }
-
-    .nav-item {
-        margin-bottom: 0.5rem;
-    }
-}
-
 .table {
     color:white;
     width: 900px;
@@ -98,7 +87,7 @@ a:active {
 }
 
 a:hover {
-    color:orangered;
+    color:darkred;
 }
 
 input[type="text"],
