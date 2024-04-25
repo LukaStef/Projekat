@@ -42,6 +42,24 @@ namespace Projekat.Admin
         protected global::System.Web.UI.WebControls.Label lblIdB;
 
         /// <summary>
+        /// reqIdBand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqIdBand;
+
+        /// <summary>
+        /// ranIdBand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator ranIdBand;
+
+        /// <summary>
         /// tbId control.
         /// </summary>
         /// <remarks>
@@ -123,6 +141,15 @@ namespace Projekat.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqDateBand;
 
         /// <summary>
+        /// regexDateBand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexDateBand;
+
+        /// <summary>
         /// tbDate control.
         /// </summary>
         /// <remarks>
@@ -175,6 +202,24 @@ namespace Projekat.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblIdA;
+
+        /// <summary>
+        /// reqIdAlbum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqIdAlbum;
+
+        /// <summary>
+        /// ranIdAlbum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator ranIdAlbum;
 
         /// <summary>
         /// tbIdA control.
@@ -258,6 +303,15 @@ namespace Projekat.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqDateAlbum;
 
         /// <summary>
+        /// regexDateAlbum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regexDateAlbum;
+
+        /// <summary>
         /// tbDateA control.
         /// </summary>
         /// <remarks>
@@ -310,6 +364,24 @@ namespace Projekat.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblIdS;
+
+        /// <summary>
+        /// reqIdSong control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqIdSong;
+
+        /// <summary>
+        /// ranIdSong control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator ranIdSong;
 
         /// <summary>
         /// tbIdS control.

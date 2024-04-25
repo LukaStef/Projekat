@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,6 +14,9 @@ namespace Projekat.Admin
     public partial class Admin : System.Web.UI.Page
     {
         string cs = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Projekat;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        const string UPIT_BAND = "SELECT sifra AS ID,naziv AS Name,logoPutanja AS [File path],CONVERT(VARCHAR,datum,23) AS Date,sajt AS Site FROM Izvodjac";
+        const string UPIT_ALBUM = "SELECT sifra AS ID,naziv AS Name ,slikaPutanja AS [File path],CONVERT(VARCHAR,datum,23) AS Date,sifraIzvodjaca AS [Band ID reference] FROM Album";
+        const string UPIT_SONG = "SELECT sifra AS ID,naziv AS Name,sifraAlbuma AS [Album ID reference],link AS [Youtube link] FROM Pesma";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack)
@@ -21,7 +25,8 @@ namespace Projekat.Admin
             {
                 SqlConnection con = new SqlConnection(cs);
 
-                string upit = "SELECT * FROM Izvodjac";
+                //string upit = "SELECT * FROM Izvodjac";
+                string upit = UPIT_BAND;
                 TraziBiloSta(con, upit);
             }
             catch (Exception x)
@@ -61,19 +66,19 @@ namespace Projekat.Admin
                 switch (ddlSearch.SelectedValue)
                 {
                     case "b":
-                        upit = "SELECT * FROM Izvodjac";
+                        upit = UPIT_BAND;
                         panelBand.Visible = true;
                         panelAlbum.Visible = false;
                         panelSong.Visible = false;
                         break;
                     case "a":
-                        upit = "SELECT * FROM Album";
+                        upit = UPIT_ALBUM;
                         panelBand.Visible = false;
                         panelAlbum.Visible = true;
                         panelSong.Visible = false;
                         break;
                     case "s":
-                        upit = "SELECT * FROM Pesma";
+                        upit = UPIT_SONG;
                         panelBand.Visible = false;
                         panelAlbum.Visible = false;
                         panelSong.Visible = true;
@@ -101,7 +106,7 @@ namespace Projekat.Admin
                         tbId.Text = row.Cells[1].Text;
                         tbName.Text = row.Cells[2].Text;
                         tbLogo.Text = row.Cells[3].Text;
-                        tbDate.Text = PromeniFormatZaDatum(row.Cells[4].Text); //sql puno zeza sa datumima
+                        tbDate.Text = row.Cells[4].Text;
                         tbSite.Text = row.Cells[5].Text;
 
                         break;
@@ -110,7 +115,7 @@ namespace Projekat.Admin
                         tbIdA.Text = row.Cells[1].Text;
                         tbNameA.Text = row.Cells[2].Text;
                         tbCover.Text = row.Cells[3].Text;
-                        tbDateA.Text = PromeniFormatZaDatum(row.Cells[4].Text);
+                        tbDateA.Text = row.Cells[4].Text;
                         tbBand.Text = row.Cells[5].Text;
 
                         break;
@@ -161,6 +166,7 @@ namespace Projekat.Admin
         protected void btnAdd_Click(object sender, EventArgs e)
         {
             lblError.Text = "";
+            UgasiIdValidatore();
             if (!Page.IsValid)
                 return;
             try
@@ -170,20 +176,21 @@ namespace Projekat.Admin
                 if (ddlSearch.SelectedValue == "b")
                 {
                     AddBand(con);
-                    upit = "SELECT * FROM Izvodjac";
+                    upit = UPIT_BAND;
                 }
                 if (ddlSearch.SelectedValue == "a")
                 {
                     AddAlbum(con);
-                    upit = "SELECT * FROM Album";
+                    upit = UPIT_ALBUM;
                 }
                 if (ddlSearch.SelectedValue == "s")
                 {
                     AddSong(con);
-                    upit = "SELECT * FROM Pesma";
+                    upit = UPIT_SONG;
                 }
                 con = new SqlConnection(cs);
                 TraziBiloSta(con, upit);
+                
             }
             catch (Exception x)
             {
@@ -192,9 +199,29 @@ namespace Projekat.Admin
                 System.Diagnostics.Debug.WriteLine(x.StackTrace);
             }
         }
+        void UgasiIdValidatore()
+        {
+            reqIdAlbum.Enabled = false;
+            reqIdSong.Enabled = false;
+            reqIdBand.Enabled = false;
 
+            ranIdAlbum.Enabled = false;
+            ranIdSong.Enabled = false;
+            ranIdBand.Enabled = false;
+        }
+        void UkljuciIdValidatore()
+        {
+            reqIdAlbum.Enabled = true;
+            reqIdSong.Enabled = true;
+            reqIdBand.Enabled = true;
+
+            ranIdBand.Enabled = true;
+            ranIdAlbum.Enabled = true;
+            ranIdSong.Enabled = true;
+        }
         protected void btnEdit_Click(object sender, EventArgs e)
         {
+            UkljuciIdValidatore();
             lblError.Text = "";
             if (!Page.IsValid)
                 return;
@@ -205,17 +232,17 @@ namespace Projekat.Admin
                 if (ddlSearch.SelectedValue == "b")
                 {
                     EditBand(con);
-                    upit = "SELECT * FROM Izvodjac";
+                    upit = UPIT_BAND;
                 }
                 if (ddlSearch.SelectedValue == "a")
                 {
                     EditAlbum(con);
-                    upit = "SELECT * FROM Album";
+                    upit = UPIT_ALBUM;
                 }
                 if (ddlSearch.SelectedValue == "s")
                 {
                     EditSong(con);
-                    upit = "SELECT * FROM Pesma";
+                    upit = UPIT_SONG;
                 }
                 con = new SqlConnection(cs);
                 TraziBiloSta(con, upit);
@@ -226,10 +253,12 @@ namespace Projekat.Admin
                 System.Diagnostics.Debug.WriteLine(x.Message);
                 System.Diagnostics.Debug.WriteLine(x.StackTrace);
             }
+            UgasiIdValidatore();
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
+            UkljuciIdValidatore();
             lblError.Text = "";
             if (!Page.IsValid)
                 return;
@@ -240,17 +269,17 @@ namespace Projekat.Admin
                 if (ddlSearch.SelectedValue == "b")
                 {
                     DeleteBand(con);
-                    upit = "SELECT * FROM Izvodjac";
+                    upit = UPIT_BAND;
                 }
                 if (ddlSearch.SelectedValue == "a")
                 {
                     DeleteAlbum(con);
-                    upit = "SELECT * FROM Album";
+                    upit = UPIT_ALBUM;
                 }
                 if (ddlSearch.SelectedValue == "s")
                 {
                     DeleteSong(con);
-                    upit = "SELECT * FROM Pesma";
+                    upit = UPIT_SONG;
                 }
                 con = new SqlConnection(cs);
                 TraziBiloSta(con, upit);
@@ -261,6 +290,7 @@ namespace Projekat.Admin
                 System.Diagnostics.Debug.WriteLine(x.Message);
                 System.Diagnostics.Debug.WriteLine(x.StackTrace);
             }
+            UgasiIdValidatore();
         }
 
         void AddBand(SqlConnection con)
@@ -409,14 +439,6 @@ namespace Projekat.Admin
                 cmd.Parameters.AddWithValue("id", id);
                 cmd.ExecuteNonQuery();
             }
-        }
-
-        string PromeniFormatZaDatum(string datum)
-        {
-            datum = datum.Remove(10);
-            string[] delovi = datum.Split('/');
-            datum = $"{delovi[2]}-{delovi[1]}-{delovi[0]}";
-            return datum;
         }
 
         protected void btnClear_Click(object sender, EventArgs e)

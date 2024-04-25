@@ -21,9 +21,8 @@
 }
 
 .nav-link {
-    color: #ccc !important;
+    color: #cccccc !important;
     transition: color 0.3s ease;
-    
 }
 
 .nav-link:hover, .nav-link:focus {
